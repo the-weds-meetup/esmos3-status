@@ -1,0 +1,39 @@
+{
+  "name": "esmos-down-detector",
+  "version": "1.0.0",
+  "author": "Amos <alphatrl1997@gmail.com>",
+  "description": "SMU ESM project to detect if server is down",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "https": "^1.0.0",
+    "node-fetch": "^2.6.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/runtime": "^7.12.5",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^14.14.31",
+    "@types/node-fetch": "^2.5.8",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "develop": "ts-node ./index.ts",
+    "build": "tsc --outDir dist",
+    "test": "echo Hi!"
+  },
+  "license": "MIT"
+}
