@@ -30,14 +30,13 @@ jobs:
       - name: Fetch data
         env:
           NODE_ENV: production
+          SERVER_URL: ${{ secrets.SERVER_URL }}
         run: yarn start
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          GIT_CONFIG_NAME: 'ESMOS Online'
-          FOLDER: temp
-          CLEAN: true
+          branch: gh-pages
+          git-config-name: 'ESMOS Online'
+          folder: temp
+          clean: true

@@ -35,7 +35,7 @@ const CheckServerStatus = async (): Promise<Record<string, unknown>> => {
     });
 
   const isOSTicketAlive = await axios
-    .get(`https://${serverURL}`, { timeout: 10000 })
+    .get(`https://${serverURL}`, { timeout: 10000, httpsAgent: agent })
     .then(() => {
       return { isAlive: true };
     })
@@ -55,7 +55,7 @@ const CheckServerStatus = async (): Promise<Record<string, unknown>> => {
     })
     .catch((error: AxiosError) => {
       console.log('---Pulse---');
-      console.log(`${error.name}: ${error.code}`);
+      console.log(`${error.name} [${error.code}]`);
       console.log('[MSG]', error.message);
       return { isAlive: false, code: error.code };
     });
