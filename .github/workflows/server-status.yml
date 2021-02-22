@@ -1,0 +1,43 @@
+name: server status
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  schedule:
+    # run every 5 mins
+    - cron: '*/5 * * * *'
+jobs:
+  get-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build /dist
+        run: yarn build
+
+      - name: Fetch data
+        env:
+          NODE_ENV: production
+        run: yarn start
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          GIT_CONFIG_NAME: 'ESMOS Online'
+          FOLDER: temp
+          CLEAN: true
