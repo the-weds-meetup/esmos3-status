@@ -2,7 +2,7 @@ import axios, {AxiosError, AxiosResponse} from 'axios';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { StatusTable, StatusTime } from '../components';
+import { StatusTable, StatusTime, StatusLegend, Footer } from '../components';
 
 interface EsmosResponse {
   time: number;
@@ -27,8 +27,9 @@ interface EsmosResponse {
 }
 
 const HomeWrapper = styled.div`
-  h1 {
-    text-align: center
+  .title {
+    padding-bottom: 12px;
+    text-align: center;
   }
 `;
 
@@ -72,7 +73,7 @@ const Home: React.FC = () => {
 
   return (
     <HomeWrapper>
-      <h1>G3T3 ESMOS System Status</h1>
+      <h1 className='title'>G3T3 ESMOS System Status</h1>
       
       {isDataFetch && (
         <>
@@ -83,8 +84,16 @@ const Home: React.FC = () => {
             pulse={statusUpdate.pulse}
           />
           <StatusTime time={unixTime} />
+
+          <StatusLegend
+            nginx={statusUpdate.nginx}
+            cat={statusUpdate.cat}
+            ticket={statusUpdate.ticket}
+            pulse={statusUpdate.pulse}
+          />
         </>
       )}
+      <Footer />
     </HomeWrapper>
   )
 }

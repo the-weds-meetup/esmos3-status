@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { StatusColor } from './';
+import { StatusColor } from '../';
 
 interface StatusTableProps {
   nginx: boolean;
