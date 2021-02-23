@@ -2,6 +2,8 @@ import axios, {AxiosError, AxiosResponse} from 'axios';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import { StatusTable, StatusTime } from '../components';
+
 interface EsmosResponse {
   time: number;
   data: {
@@ -24,11 +26,19 @@ interface EsmosResponse {
   };
 }
 
+const HomeWrapper = styled.div`
+  h1 {
+    text-align: center
+  }
+`;
+
 const Home: React.FC = () => {
-  const [nginxStatus, setNginxStatus] = useState(false);
-  const [catStatus, setCatStatus] = useState(false);
-  const [ticketStatus, setTicketStatus] = useState(false);
-  const [pulseStatus, setPulseStatus] = useState(false);
+  const [statusUpdate, setStatusUpdate] = useState({
+    nginx: false,
+    cat: false,
+    ticket: false,
+    pulse: false,
+  });
   const [unixTime, setUnixTime] = useState(Date.now);
   const [isDataFetch, setDataFetch] = useState(false);
   
@@ -44,44 +54,38 @@ const Home: React.FC = () => {
           console.log(error.message);
           return undefined;
         });
-      
-      console.log(response)
 
       if (response) {
-        setNginxStatus(response.data.nginx.isAlive);
-        setCatStatus(response.data.cat.isAlive);
-        setTicketStatus(response.data.osticket.isAlive);
-        setPulseStatus(response.data.pulse.isAlive);
+        setStatusUpdate({
+          nginx: response.data.nginx.isAlive,
+          cat: response.data.cat.isAlive,
+          ticket: response.data.osticket.isAlive,
+          pulse: response.data.pulse.isAlive,
+        });
         setUnixTime(response.time);
       }
+      setDataFetch(true);
     };
 
     getData();
-    document.title = 'ESMOS Status';
   }, []);
 
-  console.log(nginxStatus)
-
   return (
-    <>
+    <HomeWrapper>
       <h1>G3T3 ESMOS System Status</h1>
-      <div>
-        <p>NGINX Status</p>
-        <p>{nginxStatus ? 'up' : 'down'}</p>
-      </div>
-      <div>
-        <p>CAT Status</p>
-        <p>{catStatus ? 'up' : 'down'}</p>
-      </div>
-      <div>
-        <p>OSTicket Status</p>
-        <p>{ticketStatus ? 'up' : 'down'}</p>
-      </div>
-      <div>
-        <p>Pulse Status</p>
-        <p>{pulseStatus ? 'up' : 'down'}</p>
-      </div>
-    </>
+      
+      {isDataFetch && (
+        <>
+          <StatusTable
+            nginx={statusUpdate.nginx}
+            cat={statusUpdate.cat}
+            ticket={statusUpdate.ticket}
+            pulse={statusUpdate.pulse}
+          />
+          <StatusTime time={unixTime} />
+        </>
+      )}
+    </HomeWrapper>
   )
 }
 
