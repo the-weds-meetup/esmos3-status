@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const connectionString = isProduction
   ? {
-      host: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URL,
       ssl: {
         rejectUnauthorized: false,
       },
