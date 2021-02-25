@@ -41,7 +41,13 @@ const main = async () => {
   }
 
   const serverDownFilename = path.join('temp', 'server_down_count.json');
-  let serverDownCount = undefined;
+  let serverDownCount = {
+    nginx: 0,
+    cat: 0,
+    osticket: 0,
+    pulse: 0,
+  };
+
   if (fs.existsSync(serverDownFilename)) {
     serverDownCount = JSON.parse(fs.readFileSync(serverDownFilename, 'utf-8'));
     fs.unlinkSync(serverDownFilename);
