@@ -31,6 +31,7 @@ jobs:
         env:
           NODE_ENV: production
           SERVER_URL: ${{ secrets.SERVER_URL }}
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
           EMAIL_URL: ${{ secrets.EMAIL_URL }}
           EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
