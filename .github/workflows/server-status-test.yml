@@ -1,4 +1,4 @@
-name: server status
+name: server status test
 on:
   workflow_dispatch:
 jobs:
