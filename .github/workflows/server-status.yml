@@ -36,8 +36,8 @@ jobs:
           EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-          EMAIL_FROM: $${{ secrets.EMAIL_FROM}}
-          EMAIL_SUBJECT: $${{ secrets.EMAIL_SUBJECT }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM}}
+          EMAIL_SUBJECT: ${{ secrets.EMAIL_SUBJECT }}
           EMAIL_SECURE: true
 
         run: yarn start
