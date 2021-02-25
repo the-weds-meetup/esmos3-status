@@ -69,11 +69,11 @@ const processEmail = async (
     EMAIL_FROM,
     EMAIL_SUBJECT,
     EMAIL_URL,
-    TEST_RECIPIENT,
+    TEST_RECIPIENTS,
   } = process.env;
 
   const recipients: string[] = !isProduction
-    ? [TEST_RECIPIENT]
+    ? [TEST_RECIPIENTS]
     : await axios
         .get(EMAIL_URL + '/email', { timeout: 15000 })
         .then((response: AxiosResponse) => {

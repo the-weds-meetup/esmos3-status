@@ -42,5 +42,5 @@ jobs:
           branch: gh-pages
           git-config-name: 'ESMOS Online'
           folder: temp
-          clean: false
+          clean: true
           dry-run: true
