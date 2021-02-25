@@ -49,6 +49,7 @@ const main = async () => {
   };
 
   if (fs.existsSync(serverDownFilename)) {
+    console.log('Server_Down_Count file found');
     serverDownCount = JSON.parse(fs.readFileSync(serverDownFilename, 'utf-8'));
     fs.unlinkSync(serverDownFilename);
   }
