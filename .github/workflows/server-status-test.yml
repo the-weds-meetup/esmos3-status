@@ -24,6 +24,7 @@ jobs:
       - name: Fetch data
         env:
           NODE_ENV: staging
+          FILE_SERVER_URL: ${{ secrets.FILE_SERVER_URL }}
           SERVER_URL: ${{ secrets.SERVER_URL }}
           EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
           EMAIL_URL: ${{ secrets.EMAIL_URL }}
@@ -45,4 +46,3 @@ jobs:
           folder: temp
           clean: true
           dry-run: true
-          clean-exclude: temp

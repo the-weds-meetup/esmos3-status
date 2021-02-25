@@ -1,3 +1,4 @@
+import axios, { AxiosResponse } from 'axios';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
@@ -36,23 +37,26 @@ const isDifferentObject = (
 const main = async () => {
   // create file
   const filename = path.join('temp', 'server_status.json');
+  const serverDownFilename = path.join('temp', 'server_down_count.json');
+
   if (fs.existsSync(filename)) {
     fs.unlinkSync(filename);
   }
-
-  const serverDownFilename = path.join('temp', 'server_down_count.json');
-  let serverDownCount = {
-    nginx: 0,
-    cat: 0,
-    osticket: 0,
-    pulse: 0,
-  };
-
   if (fs.existsSync(serverDownFilename)) {
-    console.log('Server_Down_Count file found');
-    serverDownCount = JSON.parse(fs.readFileSync(serverDownFilename, 'utf-8'));
     fs.unlinkSync(serverDownFilename);
   }
+
+  const serverDownCount = await axios
+    .get(process.env.FILE_SERVER_URL + '/server_down_count.json', {
+      timeout: 10000,
+    })
+    .then((response: AxiosResponse) => {
+      console.log('server_count found');
+      return response.data;
+    })
+    .catch(() => {
+      return { nginx: 0, cat: 0, osticket: 0, pulse: 0 };
+    });
 
   // get server status, dead or alive
   const serverStatus = await CheckServerStatus();
