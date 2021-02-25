@@ -1,14 +1,8 @@
 name: server status
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-  schedule:
-    # run every 1 mins
-    - cron: '* * * * *'
 jobs:
-  get-data:
+  get-data-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -29,7 +23,7 @@ jobs:
 
       - name: Fetch data
         env:
-          NODE_ENV: production
+          NODE_ENV: staging
           SERVER_URL: ${{ secrets.SERVER_URL }}
           EMAIL_URL: ${{ secrets.EMAIL_URL }}
           EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
@@ -48,3 +42,4 @@ jobs:
           git-config-name: 'ESMOS Online'
           folder: temp
           clean: false
+          dry-run: true

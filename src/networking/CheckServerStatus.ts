@@ -4,7 +4,26 @@ import https from 'https';
 
 dotenv.config();
 
-const CheckServerStatus = async (): Promise<Record<string, unknown>> => {
+interface dataProps {
+  nginx: {
+    isAlive: boolean;
+    code?: string;
+  };
+  cat: {
+    isAlive: boolean;
+    code?: string;
+  };
+  osticket: {
+    isAlive: boolean;
+    code?: string;
+  };
+  pulse: {
+    isAlive: boolean;
+    code?: string;
+  };
+}
+
+const CheckServerStatus = async (): Promise<dataProps> => {
   const serverURL = process.env.SERVER_URL;
   const catSystem = ':8000';
   const pulse = ':8001/testpoint';

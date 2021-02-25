@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      * { 
+        font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif; 
+      }
+
+      .services {
+        font-weight: 600;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Dear Users,</p>
+    <p>
+      We wish to inform you that 
+      <span class="services">{{ servers }}</span>
+      <span> {{ isAre }} </span>
+      experiencing intermittent access issues.
+    </p>
+    <p>
+      Our team is currently rectifying this issue and will update you once we have restored the 
+      <span>{{ servicePlural }}</span>.
+    </p>
+    <p>We apologize for any inconvenience caused.</p>
+
+    </br>
+    <p>
+      {{ salutation }}</br>
+      Yang Kai </br>
+      G3T3 IT Operations Manager </br>
+    </p>
+  </body>
+</html>
