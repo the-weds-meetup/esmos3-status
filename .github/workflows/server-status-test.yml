@@ -27,11 +27,12 @@ jobs:
           SERVER_URL: ${{ secrets.SERVER_URL }}
           EMAIL_URL: ${{ secrets.EMAIL_URL }}
           EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-          EMAIL_SECURE: true
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.PASS }}
-          EMAIL_FROM: $${{ EMAIL_FROM}}
-          EMAIL_SUBJECT: $${{ EMAIL_SUBJECT }}
+          EMAIL_FROM: $${{ secrets.EMAIL_FROM}}
+          EMAIL_SUBJECT: $${{ secrets.EMAIL_SUBJECT }}
+          TEST_RECIPIENTS: ${{ secrets.TEST_RECIPIENTS }}
+          EMAIL_SECURE: true
 
         run: yarn start
 
