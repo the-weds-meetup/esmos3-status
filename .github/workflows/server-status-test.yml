@@ -45,3 +45,4 @@ jobs:
           folder: temp
           clean: true
           dry-run: true
+          clean-exclude: temp

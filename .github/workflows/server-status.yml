@@ -49,4 +49,4 @@ jobs:
           git-config-name: 'ESMOS Online'
           folder: temp
           clean: true
-          clean-exclude: 'temp'
+          clean-exclude: temp
