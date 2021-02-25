@@ -119,7 +119,7 @@ const processEmail = async (
 
   const mailOpts: SendMailOptions = {
     from: EMAIL_FROM,
-    to: recipients,
+    bcc: recipients,
     subject: EMAIL_SUBJECT,
     text: 'YES',
     html,
