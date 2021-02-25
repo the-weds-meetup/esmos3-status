@@ -14,8 +14,8 @@ if (!fs.existsSync('temp')) {
 }
 
 const isDifferentObject = (
-  objectA: Record<string, unknown>,
-  objectB: Record<string, unknown>
+  objectA: Record<string, number>,
+  objectB: Record<string, number>
 ): boolean => {
   const keysA = Object.keys(objectA);
   const keysB = Object.keys(objectB);
