@@ -5,8 +5,8 @@ on:
     branches:
       - master
   schedule:
-    # run every 1 mins
-    - cron: '* * * * *'
+    # run every 5 mins
+    - cron: '*/5 * * * *'
 jobs:
   get-data:
     runs-on: ubuntu-latest
