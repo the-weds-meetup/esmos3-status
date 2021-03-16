@@ -16,6 +16,17 @@
     "path": "^0.12.7",
     "pg": "^8.5.1"
   },
+  "scripts": {
+    "start": "webpack serve --open --mode=development",
+    "test": "echo \"Error: No Test specified\" && exit 1",
+    "build": "webpack --mode=production",
+    "clean": "rm -Rf dist/*"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/eslint-parser": "^7.12.1",
