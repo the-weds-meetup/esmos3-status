@@ -50,3 +50,4 @@ jobs:
           git-config-name: 'ESMOS Online'
           folder: temp
           clean: true
+          single-commit: true
