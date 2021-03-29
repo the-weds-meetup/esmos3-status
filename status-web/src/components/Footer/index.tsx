@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeConsumer } from 'styled-components';
 
 const FooterWrapper = styled.footer`
   @media screen and (min-width: 550px) {
@@ -39,9 +40,12 @@ const Footer: React.FC = () => {
 
   const _handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    axios.post(`${process.env.EMAIL_SERVER_URL}` + '/email/' + email)
+      .then(()=> {
+        console.log('😎');
+      }).catch((error) => console.log(error))
+      .finally(() => setEmail(''));
   };
-
-  console.log(email)
 
   return (
     <FooterWrapper>
