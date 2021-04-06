@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  schedule:
-    # run every 5 mins
-    - cron: '*/5 * * * *'
 jobs:
   get-data:
     runs-on: ubuntu-latest
