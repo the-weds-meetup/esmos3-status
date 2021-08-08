@@ -1,3 +1,11 @@
-# ESMOS System Status
+# ESMOS Status Web UI
 
-Web UI and email server for ESMOS3 2021
+> Website which displays the current status of ESMOS fetched from the down-detector
+
+## Setup
+
+```bash
+yarn install
+
+yarn start
+```
